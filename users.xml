@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<users>
+    <user>
+        <admin>true</admin>
+        <login>mum</login>
+        <password>pass</password>
+    </user>
+    <user>
+        <admin>false</admin>
+        <login>dad</login>
+        <password>pass</password>
+    </user>
+    <user>
+        <admin>false</admin>
+        <login>uncle</login>
+        <password>pass</password>
+    </user>
+</users>

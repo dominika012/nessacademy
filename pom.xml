@@ -26,5 +26,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
+    <name>nessacademy</name>
 </project>
