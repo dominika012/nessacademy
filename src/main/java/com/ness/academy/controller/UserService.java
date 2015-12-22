@@ -30,9 +30,10 @@ public class UserService {
     }
     
     public boolean canAdd(String login, String password){
-        if (login.isEmpty() || password.isEmpty()) {
+        if (login.isEmpty() || password.isEmpty()) 
+            for(User user : userDao.users())
+                if(user.getLogin().compareTo(login)==0)
             return false;
-        }
         return true;
     }
     
@@ -66,10 +67,12 @@ public class UserService {
         userDao.remove(user);
     }
     
+    
     public boolean isAuthentificated(String login, String password){
         for(User user:userDao.users())
             if(user.getLogin().equals(login) && user.getPassword().equals(password))
                 return true;
         return false;
     }
+    
 }

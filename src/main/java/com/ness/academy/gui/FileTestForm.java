@@ -89,12 +89,14 @@ public class FileTestForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSendMouseClicked
-        try {
-            //---------------input to xml file-----------------------
+        
+            
             userManager.add("mum", "pass", true);
             userManager.add("dad", "pass", false);
             userManager.add("uncle", "pass", false);
-            
+            /*
+            try {
+            //---------------input to xml file-----------------------
             Users usersMarsh = new Users();
             usersMarsh.setUsers(userManager.users());
             JAXBContext context = JAXBContext.newInstance(Users.class);
@@ -114,6 +116,8 @@ public class FileTestForm extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FileTestForm.class.getName()).log(Level.SEVERE, null, ex);
         }
+        */
+            userManager.users();
     }//GEN-LAST:event_btnSendMouseClicked
 
     /**

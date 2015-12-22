@@ -7,12 +7,14 @@
 package com.ness.academy.wrapper;
 
 import com.ness.academy.bean.User;
-import com.ness.academy.controller.UserService;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+
+//Wrapper for User
+//this class is nedeed for XML I/O
 
 @XmlRootElement(name = "users")
 @XmlAccessorType (XmlAccessType.FIELD)

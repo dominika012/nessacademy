@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+ 
+ <properties>
+ 	
+ 	<entry key="login">
+            select count(*) > 0 from account where login = ? and password = ? 	
+ 	</entry>
+        
+        <entry key="users">
+            select * from users	
+ 	</entry>
+        
+ </properties>

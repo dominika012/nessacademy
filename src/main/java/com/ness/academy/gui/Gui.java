@@ -8,6 +8,7 @@ package com.ness.academy.gui;
 import com.ness.academy.bean.Product;
 import com.ness.academy.controller.OrderService;
 import com.ness.academy.controller.ProductService;
+import com.ness.academy.controller.UserService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -27,11 +28,14 @@ public class Gui extends javax.swing.JFrame {
     
     ProductService productManager;
     OrderService orderManager;
+    UserService userManager;
+    
     public Gui() {
         initComponents();
         
         productManager = new ProductService();
         orderManager = new OrderService();
+        userManager = new UserService();
     }
 
     /**

@@ -7,6 +7,7 @@ import java.util.List;
 
 public class OrderDao implements IOrderDao{
     List<Order> orders=new ArrayList<Order>();
+    List<Order> userOrders=new ArrayList<Order>();
     
         @Override
         public void addOrder(Order order) {
@@ -39,6 +40,16 @@ public class OrderDao implements IOrderDao{
                 }
                 return null;
         }
+
+    @Override
+    public List<Order> userOrders(String login) {
+        for (int i = 0; i < orders().size(); i++) {
+                  if (orders().get(i).getUser().getLogin() == login) {
+                    userOrders.add(orders().get(i));
+                  }
+                }
+                return userOrders;
+    }
         
         
 }

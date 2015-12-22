@@ -8,14 +8,16 @@ public class Order {
 
 	private String id;
 	private List<Product> products;
+        private User user;
         
         public Order(){
         }
         
-	public Order(List<Product> products) {
+	public Order(List<Product> products, User user) {
 		super();
 		this.id = setOrderId();
                 this.products = products;
+                this.user = user;
 	}
         
         public String getId() {
@@ -32,6 +34,14 @@ public class Order {
 
 	public void setProducts(List<Product> products) {
 		this.products = products;
+	}
+        
+        public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
         
 	@Override

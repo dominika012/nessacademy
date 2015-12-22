@@ -7,6 +7,7 @@
 package com.ness.academy.gui;
 
 
+import com.ness.academy.authentification.LoginAuthSingletonFactory;
 import com.ness.academy.controller.UserService;
 import javax.swing.JOptionPane;
 
@@ -139,19 +140,20 @@ public class SignForm extends javax.swing.JFrame {
             .addGroup(background1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblRegistration, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(background1Layout.createSequentialGroup()
-                        .addComponent(lblPassword1)
-                        .addGap(18, 18, 18)
                         .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(62, Short.MAX_VALUE))
-                    .addGroup(background1Layout.createSequentialGroup()
-                        .addComponent(lblLogin1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(lblRegistration, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(background1Layout.createSequentialGroup()
+                                .addComponent(lblLogin1)
+                                .addGap(18, 18, 18)
+                                .addComponent(tfLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(background1Layout.createSequentialGroup()
+                                .addComponent(lblPassword1)
+                                .addGap(29, 29, 29)
+                                .addGroup(background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnRegistration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tfPassword1, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))))
+                        .addGap(0, 51, Short.MAX_VALUE))))
         );
         background1Layout.setVerticalGroup(
             background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,8 +213,11 @@ public class SignForm extends javax.swing.JFrame {
     private void btnAuthentificationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAuthentificationMouseClicked
         String login = tfLogin.getText();
         String password = String.valueOf(tfPassword.getPassword());
-        if(userManager.isAuthentificated(login, password))
-            JOptionPane.showMessageDialog(null, "Valid Authentification.");
+        if(userManager.isAuthentificated(login, password)) {
+            //LoginAuthSingletonFactory.INSTANCE.
+            //new Gui().setVisible(true);
+        }
+            
         else
             JOptionPane.showMessageDialog(null, "Can not log in. Invalid inputs.");
         

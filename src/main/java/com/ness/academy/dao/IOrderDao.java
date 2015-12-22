@@ -2,6 +2,7 @@
 package com.ness.academy.dao;
 
 import com.ness.academy.bean.Order;
+import com.ness.academy.bean.User;
 import java.util.List;
 
 public interface IOrderDao {
@@ -15,4 +16,6 @@ public interface IOrderDao {
         public void remove(Order order);
         
         public Order findById(String id);
+        
+        public List<Order> userOrders(String login);
 }

@@ -6,17 +6,15 @@
 package com.ness.academy.dao;
 
 import com.ness.academy.bean.User;
-import com.ness.academy.gui.FileTestForm;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import com.ness.academy.connection.DataSourceInstance;
+import com.ness.academy.connection.QueryInstance;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
+import javax.sql.DataSource;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -26,22 +24,50 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author P3502442
  */
-@XmlRootElement(name = "users")
-@XmlAccessorType (XmlAccessType.FIELD)
+//@XmlRootElement(name = "users")
+//@XmlAccessorType (XmlAccessType.FIELD)
 public class UserDao implements IUserDao{
 
     List<User> users=new ArrayList<User>();
     List<User> admins=new ArrayList<User>();
     List<User> customers=new ArrayList<User>();
    
+    DataSourceInstance ds;
     
     @Override
     public void add(User user) {
+        
         users.add(user);
     }
-    @XmlElement(name = "user")
+    //@XmlElement(name = "user")
+    
+    //modify method -> separate closing connection functionality !!!
+    //FIXME
     @Override
     public List<User> users() {
+        DataSource ds = DataSourceInstance.getInstance().getDataSource();
+        String sql = QueryInstance.getInstance().getQuery("users");
+        Connection con = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = ds.getConnection();
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                System.out.println("Users ID="+rs.getInt("id")+", Login="+rs.getString("login"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+                try {
+                    if(rs != null) rs.close();
+                    if(stmt != null) stmt.close();
+                    if(con != null) con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+        }
         return users;
     }
 
